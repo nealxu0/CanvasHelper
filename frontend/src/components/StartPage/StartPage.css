@@ -1,0 +1,150 @@
+.startpage-typewriter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.1rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 12px #2228;
+  min-height: 2.5rem;
+  user-select: none;
+}
+
+.startpage-cursor {
+  display: inline-block;
+  width: 1ch;
+  color: #c52d43;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.startpage-heading {
+  font-size: 1.6rem;
+  color: #c52d43;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.startpage-icon {
+  font-size: 2rem;
+  vertical-align: middle;
+}
+
+.startpage-select-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.startpage-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.startpage-label {
+  font-size: 1.25rem;
+  color: #fff;
+  background: linear-gradient(90deg, #c52d43 0%, #888 100%);
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  letter-spacing: 1px;
+  display: inline-block;
+}
+
+.startpage-select {
+  font-size: 1.1rem;
+  padding: 0.6rem 2.2rem 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #c52d43;
+  background: linear-gradient(90deg, #fff 60%, #f7f7f7 100%);
+  color: #c52d43;
+  font-weight: 600;
+  outline: none;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.startpage-select:focus {
+  border: 2px solid #888;
+  box-shadow: 0 0 0 2px #c52d4340;
+}
+
+.startpage-custom-range {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.startpage-date {
+  font-size: 1rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.4rem;
+  border: 1.5px solid #888;
+  background: #f7f7f7;
+  color: #222;
+  outline: none;
+}
+.startpage-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 60vh;
+  margin-top: 1rem;
+}
+
+.startpage-box {
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  padding: 3.5rem 2.5rem;
+  min-width: 750px;
+  min-height: 440px;
+  max-width: 98vw;
+  max-height: 60vh;
+  text-align: center;
+  border: 3px solid black;
+  position: relative;
+  z-index: 1;
+}
+
+.startpage-box::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  z-index: -1;
+  border-radius: 1.35rem;
+  background: linear-gradient(120deg, #c52d43, #888);
+}
+
+.startpage-box h2 {
+  margin-bottom: 0.5rem;
+  color: #c52d43;
+  font-size: 2rem;
+}
+
+.startpage-box p {
+  color: #44474a;
+  font-size: 1.1rem;
+}
