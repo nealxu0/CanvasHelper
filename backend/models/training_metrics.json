@@ -1,0 +1,42 @@
+{
+  "data_file": "backend/training_data/oulad_training.csv",
+  "n_samples": 173912,
+  "features": [
+    "weight",
+    "vle_count_total",
+    "past_avg_score",
+    "assessment_type"
+  ],
+  "target": "assignment_hours",
+  "r2_test": 0.9999797927753883,
+  "mae_test": 0.0017580139723446296,
+  "rmse_test": 0.005187798946889543,
+  "cv_r2_mean": 0.9980490369775186,
+  "cv_r2_std": 0.0019481655090617081,
+  "feature_importances": [
+    {
+      "feature": "weight",
+      "importance": 0.6083627881659773
+    },
+    {
+      "feature": "assessment_type_Exam",
+      "importance": 0.3041384118851483
+    },
+    {
+      "feature": "vle_count_total",
+      "importance": 0.08692140921491322
+    },
+    {
+      "feature": "past_avg_score",
+      "importance": 0.0005674877663049954
+    },
+    {
+      "feature": "assessment_type_CMA",
+      "importance": 5.337084846264132e-06
+    },
+    {
+      "feature": "assessment_type_TMA",
+      "importance": 4.565882809966717e-06
+    }
+  ]
+}
