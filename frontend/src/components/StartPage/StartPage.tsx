@@ -1,7 +1,11 @@
 import React, { useRef } from "react";
 import "./StartPage.css";
 
-const StartPage: React.FC = () => {
+interface StartPageProps {
+  onFinish?: () => void;
+}
+
+const StartPage: React.FC<StartPageProps> = ({ onFinish }) => {
   const [range, setRange] = React.useState("");
   const [hidden, setHidden] = React.useState(false);
   const [disappearing, setDisappearing] = React.useState(false);
@@ -63,7 +67,10 @@ const StartPage: React.FC = () => {
 
   const handleDisappear = () => {
     setDisappearing(true);
-    setTimeout(() => setHidden(true), 700); // match animation duration
+    setTimeout(() => {
+      setHidden(true);
+      if (onFinish) onFinish();
+    }, 700); // match animation duration
   };
 
   return (
