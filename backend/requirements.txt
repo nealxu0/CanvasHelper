@@ -7,3 +7,7 @@ pandas
 numpy
 joblib
 langchain
+chromadb
+sentence-transformers
+transformers
+huggingface-hub
