@@ -12,6 +12,7 @@ const InputQuery: React.FC<InputQueryProps> = ({ reappear, onSend }) => {
   const maxHeight = 180;
   const [value, setValue] = useState("");
   const [isListening, setIsListening] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [isSupported, setIsSupported] = useState(false);
   const [showMic, setShowMic] = useState(false);
 
@@ -85,21 +86,9 @@ const InputQuery: React.FC<InputQueryProps> = ({ reappear, onSend }) => {
     }
   };
 
-  const toggleListening = () => {
-    if (!isSupported) {
-      alert(
-        "Speech recognition is not supported in your browser. Please use Chrome, Safari, or Edge."
-      );
-      return;
-    }
-    if (isListening) {
-      recognitionRef.current?.stop();
-      setIsListening(false);
-    } else {
-      setValue("");
-      recognitionRef.current?.start();
-      setIsListening(true);
-    }
+  // Toggle mute state (UI only)
+  const toggleMute = () => {
+    setIsMuted((prev) => !prev);
   };
 
   return (
@@ -135,12 +124,10 @@ const InputQuery: React.FC<InputQueryProps> = ({ reappear, onSend }) => {
       </div>
       {showMic && (
         <button
-          className={`inputquery-mic${
-            isListening ? " inputquery-mic-active" : ""
-          }`}
+          className={`inputquery-mic${isMuted ? " inputquery-mic-active" : ""}`}
           type="button"
-          onClick={toggleListening}
-          title={isListening ? "Stop recording" : "Start voice input"}
+          onClick={toggleMute}
+          title={isMuted ? "Muted" : "Unmuted"}
           style={{
             width: "3rem",
             height: "3rem",
@@ -150,28 +137,11 @@ const InputQuery: React.FC<InputQueryProps> = ({ reappear, onSend }) => {
             justifyContent: "center",
           }}
         >
-          {isListening ? (
+          {/* Show normal mic when not muted, mic with line when muted */}
+          {!isMuted ? (
             <svg
-              width="70%"
-              height="70%"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ display: "block" }}
-            >
-              <line x1="1" y1="1" x2="23" y2="23" />
-              <path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6" />
-              <path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23" />
-              <line x1="12" y1="19" x2="12" y2="23" />
-              <line x1="8" y1="23" x2="16" y2="23" />
-            </svg>
-          ) : (
-            <svg
-              width="70%"
-              height="70%"
+              width="60%"
+              height="60%"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -184,6 +154,31 @@ const InputQuery: React.FC<InputQueryProps> = ({ reappear, onSend }) => {
               <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
               <line x1="12" y1="19" x2="12" y2="23" />
               <line x1="8" y1="23" x2="16" y2="23" />
+            </svg>
+          ) : (
+            <svg
+              width="60%"
+              height="60%"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ display: "block" }}
+            >
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+              <line x1="12" y1="19" x2="12" y2="23" />
+              <line x1="8" y1="23" x2="16" y2="23" />
+              <line
+                x1="4"
+                y1="4"
+                x2="20"
+                y2="20"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              />
             </svg>
           )}
         </button>
