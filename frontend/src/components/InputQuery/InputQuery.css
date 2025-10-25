@@ -86,19 +86,26 @@
   resize: none;
   box-sizing: border-box;
 }
+
+.inputquery-box {
+  /* Subtle idle glow */
+  box-shadow: 0 0 0 2px #c52d4320, 0 0 8px 1px #c52d4320;
+  transition: box-shadow 0.22s, border 0.18s, background 0.18s;
+}
+
 .inputquery-box:focus {
   border: 2px solid #c52d43;
-  box-shadow: 0 0 0 4px #c52d4340, 0 0 16px 2px #c52d43cc;
+  box-shadow: 0 0 0 6px #c52d4340, 0 0 24px 4px #c52d43cc;
   outline: none;
   animation: inputquery-glow 2.2s ease-in-out infinite alternate;
 }
 
 @keyframes inputquery-glow {
   0% {
-    box-shadow: 0 0 0 4px #c52d4340, 0 0 16px 2px #c52d43cc;
+    box-shadow: 0 0 0 6px #c52d4340, 0 0 24px 4px #c52d43cc;
   }
   100% {
-    box-shadow: 0 0 0 8px #c52d4320, 0 0 32px 8px #c52d43cc;
+    box-shadow: 0 0 0 12px #c52d4320, 0 0 48px 12px #c52d43cc;
   }
 }
 .inputquery-send {

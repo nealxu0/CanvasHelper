@@ -42,16 +42,32 @@
 }
 .chatdisplay-message {
   font-size: 1.18rem;
-  color: #ffffff;
   font-weight: 600;
   text-align: left;
-  background: none;
   border: none;
   box-shadow: none;
   padding: 0.7rem 0.5rem 0.7rem 1.5rem;
-  margin: 0;
+  margin: 0.3rem 0;
   max-width: 100%;
   word-break: break-word;
+  border-radius: 1.2rem;
+  line-height: 1.6;
+}
+
+.chatdisplay-message-user {
+  background: linear-gradient(90deg, #23272f 0%, #3a3f4b 100%);
+  color: #fff;
+  align-self: flex-end;
+  margin-left: 20%;
+  margin-right: 0;
+}
+
+.chatdisplay-message-ai {
+  background: none;
+  color: #ffffff;
+  align-self: flex-start;
+  margin-right: 20%;
+  margin-left: 0;
 }
 .chatdisplay-message-ai {
   /* No extra styles needed, keep text red */
