@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./StartPage.css";
 
 const StartPage: React.FC = () => {
-  const [range, setRange] = React.useState("month");
+  const [range, setRange] = React.useState("");
+  const [hidden, setHidden] = React.useState(false);
+  const [disappearing, setDisappearing] = React.useState(false);
+  const boxRef = useRef<HTMLDivElement>(null);
   const [customStart, setCustomStart] = React.useState("");
   const [customEnd, setCustomEnd] = React.useState("");
 
@@ -56,9 +59,21 @@ const StartPage: React.FC = () => {
       (selectedPrompt === "custom" && customPrompt.trim() !== ""));
   const canStart = isDateValid && isPromptValid;
 
+  if (hidden) return null;
+
+  const handleDisappear = () => {
+    setDisappearing(true);
+    setTimeout(() => setHidden(true), 700); // match animation duration
+  };
+
   return (
     <div className="startpage-container">
-      <div className="startpage-box">
+      <div
+        className={`startpage-box${
+          disappearing ? " startpage-box-disappear" : ""
+        }`}
+        ref={boxRef}
+      >
         <form className="startpage-form">
           <div className="startpage-typewriter">
             {displayText}
@@ -74,6 +89,9 @@ const StartPage: React.FC = () => {
               value={range}
               onChange={(e) => setRange(e.target.value)}
             >
+              <option value="" disabled hidden>
+                Choose an option
+              </option>
               <option value="month">This Month</option>
               <option value="week">This Week</option>
               <option value="today">Today</option>
@@ -139,26 +157,9 @@ const StartPage: React.FC = () => {
             type="button"
             className={`startpage-submit-btn${canStart ? " enabled" : ""}`}
             disabled={!canStart}
-            style={{
-              marginTop: "2.2rem",
-              width: "100%",
-              padding: "0.9rem 0",
-              fontSize: "1.15rem",
-              fontWeight: 700,
-              borderRadius: "0.7rem",
-              border: "none",
-              background: canStart
-                ? "linear-gradient(90deg, #c52d43 0%, #e74c3c 100%)"
-                : "#e0e0e0",
-              color: canStart ? "#fff" : "#aaa",
-              cursor: canStart ? "pointer" : "not-allowed",
-              boxShadow: canStart ? "0 2px 12px #c52d4340" : "0 1px 4px #8882",
-              opacity: canStart ? 1 : 0.7,
-              letterSpacing: "1px",
-              transition: "all 0.18s",
-            }}
+            onClick={handleDisappear}
           >
-            Start Summarizing
+            <span>Start Summarizing</span>
           </button>
         </form>
       </div>
